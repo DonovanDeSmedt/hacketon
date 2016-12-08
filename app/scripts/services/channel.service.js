@@ -23,9 +23,12 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 			getAllRoversIds().forEach((id) => {
 				let request = $http.get('https://roguerovers-api-develop.azurewebsites.net/api/channel/'+id)
 								.then(function(data) {
-									let rover = data.data;
-									rover.distanceToBase = calculateDistanceToBase(rover);
-									rovers.push(rover);
+									if(data.status === 200){
+										let rover = data.data;
+										rover.distanceToBase = calculateDistanceToBase(rover);
+										rover.isFavorite = isFavorite(rover);
+										rovers.push(rover);
+									}
 								}).catch(function(err) {
 									console.log(err);
 								});
@@ -46,20 +49,51 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 		let sortRovers = (rovers, type) => {
 			switch(type){
 				case 'd': {
-					rovers.sort((a, b) => { return a.distanceToBase - b.distanceToBase})
+					return rovers.sort((a, b) => { return a.distanceToBase - b.distanceToBase});
 				}
 				case 'x': {
-					rovers.sort((a, b) => { return a.position.x - b.position.x})
+					return rovers.sort((a, b) => { return a.position.x - b.position.x});
 				}
 				case 'y': {
-					rovers.sort((a, b) => { return a.position.y - b.position.y})
+					return rovers.sort((a, b) => { return a.position.y - b.position.y});
 				}
+			}
+		}
+
+		let toggleFavorite = (rover) => {
+			let favoriteRovers = $cookies.getObject('favorite');
+
+			if(favoriteRovers[0] === null){
+				favoriteRovers = [];	
+			}
+			const index = favoriteRovers.findIndex((r) => {r.name === rover.name})
+			// If rover is in favorites
+			if(index > -1){
+				favoriteRovers.splice(index, 1);
+			}
+			else{
+				favoriteRovers.push(rover);
+			}
+			$cookies.putObject('favorite', favoriteRovers);
+		}
+		let isFavorite = (rover) => {
+			let favoriteRovers = $cookies.getObject('favorite');
+
+			if(favoriteRovers[0] === null){
+				return false;
+			}
+			else{
+				console.log(favoriteRovers);
+				const index = favoriteRovers.findIndex((r) => {r.name === rover.name});
+				return index > -1;
 			}
 		}
 		
 		
 		return{
-			getAllRovers: getAllRovers
+			getAllRovers: getAllRovers,
+			sortRovers: sortRovers,
+			toggleFavorite: toggleFavorite,
 		}
 	})();
 }]);
