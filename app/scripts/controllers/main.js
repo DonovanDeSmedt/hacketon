@@ -1,4 +1,4 @@
-'use strict';
+
 
 /**
  * @ngdoc function
@@ -7,11 +7,23 @@
  * # MainCtrl
  * Controller of the testApp
  */
-angular.module('testApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+ (function(){
+'use strict';
+
+angular.module('rogerApp')
+  .controller('MainCtrl',['$scope','$rootScope', 'channelFactory', mainCtrl]); 
+  	function mainCtrl($scope, $rootScope, channelFactory) {
+
+    let self = this;
+    self.getAllRovers = getAllRovers;
+    self.roverIds;
+
+    function getAllRovers() {
+    	channelFactory.getAllRovers().then(function(data) {
+    		self.roverIds = data;
+    		console.log(self.roverIds);
+    	});
+    }
+    self.getAllRovers();
+  };
+})();

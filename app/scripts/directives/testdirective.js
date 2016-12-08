@@ -6,7 +6,7 @@
  * @description
  * # testDirective
  */
-angular.module('testApp')
+angular.module('rogerApp')
   .directive('testDirective', function () {
     return {
       template: '<div>HELLO</div>',
