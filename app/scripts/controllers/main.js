@@ -17,11 +17,12 @@ angular.module('rogerApp')
     let self = this;
     self.getAllRovers = getAllRovers;
     self.roverIds;
+    self.rovers;
 
     function getAllRovers() {
     	channelFactory.getAllRovers().then(function(data) {
-    		self.roverIds = data;
-    		console.log(self.roverIds);
+    		self.rovers = data;
+    		console.log(self.rovers);
     	});
     }
     self.getAllRovers();
