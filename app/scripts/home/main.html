@@ -71,9 +71,20 @@
               <div ng-hide="roverCtrl.isRoverFavorite(rover)">
                 <i class="fa fa-bookmark-o" aria-hidden="true"></i>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
         </div>
+      </div>
+    </div>
+
+    <div class="map">
+      <div ng-repeat='rover in roverCtrl.rovers'>
+        <div id='{{rover.id}}' class="map-marker {{rover.name}}">
+          <span class="fa fa-car"></span> {{rover.name}}
+        </div>
+      </div>
+      <div class="base-marker">
+        <span class="fa fa-bank"></span>
       </div>
     </div>

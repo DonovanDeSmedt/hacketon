@@ -16,6 +16,7 @@
     self.sortType;
     self.roverIds;
     self.rovers = rovers;
+    self.initMap = initMap;
 
     function getAllRovers() {
       // $interval(function(){
@@ -26,6 +27,7 @@
       //       },5000);
       channelFactory.getAllRovers().then(function(data) {
             self.rovers = data;
+            initMap();
             sortRovers('d');
           });
     }
@@ -58,6 +60,25 @@
           break;
       }
     };
+    function initMap(){
+      console.log("hond");
+      var mapWidth = $('.map').width();
+      $('.map').css('height', mapWidth);
+
+      self.rovers.forEach((e) => {
+        initMarker(e);
+      });
+
+    }
+
+    function initMarker(rover){
+      var roverX = rover.position.x;
+      var roverY = rover.position.y;
+      roverX = Math.floor(roverX / 4);
+      roverY = Math.floor(roverY / 4);
+      $('#' + rover.id).css('bottom', 'calc( 50% + ' + roverY + 'px - 13px)').css('left', 'calc( 50% + ' + roverX + 'px - 13px)');
+
+    }
   };
 
 
