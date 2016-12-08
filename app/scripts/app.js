@@ -36,12 +36,12 @@
     controller: 'AboutCtrl',
     controllerAs: 'about'
   })
-  .state('details',{
+  .state('rover',{
     cache: false,
-    url:'/details',
-    templateUrl: 'views/details.html',
-    controller: 'DetailsCtrl',
-    controllerAs: 'details'
+    url:'/rover/:id',
+    templateUrl: 'scripts/rover/rover.detail.html',
+    controller: 'DetailCtrl',
+    controllerAs: 'detailCtrl'
   })
     // $routeProvider
     //   .when('/', {

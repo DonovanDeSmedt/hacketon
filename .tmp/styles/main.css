@@ -71,6 +71,10 @@ p, .site-content   ul {
 }
 
 
+#mars-map{
+    height: 600px;
+    background: url(../images/mars.jpg);
+}
 
 /***** Page title *****/
 

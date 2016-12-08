@@ -27,6 +27,7 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 										let rover = data.data;
 										rover.distanceToBase = calculateDistanceToBase(rover);
 										rover.isFavorite = isFavorite(rover);
+										rover.id = id;
 										rovers.push(rover);
 									}
 								}).catch(function(err) {
@@ -63,10 +64,10 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 		let toggleFavorite = (rover) => {
 			let favoriteRovers = $cookies.getObject('favorite');
 
-			if(favoriteRovers[0] === null){
+			if(angular.isUndefined(favoriteRovers)){
 				favoriteRovers = [];	
 			}
-			const index = favoriteRovers.findIndex((r) => {r.name === rover.name})
+			const index = favoriteRovers.map((r) => {return r.name}).indexOf(rover.name);
 			// If rover is in favorites
 			if(index > -1){
 				favoriteRovers.splice(index, 1);
@@ -79,14 +80,18 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 		let isFavorite = (rover) => {
 			let favoriteRovers = $cookies.getObject('favorite');
 
-			if(favoriteRovers[0] === null){
+			if(angular.isUndefined(favoriteRovers)){
 				return false;
 			}
 			else{
-				console.log(favoriteRovers);
-				const index = favoriteRovers.findIndex((r) => {r.name === rover.name});
+				const index = favoriteRovers.map((r) => {return r.name}).indexOf(rover.name);
 				return index > -1;
 			}
+		}
+		let getRoverById = (id) => {
+			return $http.get('https://roguerovers-api-develop.azurewebsites.net/api/channel/'+id).then(function(data) {
+				return data.data;
+			});
 		}
 		
 		
@@ -94,6 +99,8 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 			getAllRovers: getAllRovers,
 			sortRovers: sortRovers,
 			toggleFavorite: toggleFavorite,
+			isFavorite: isFavorite,
+			getRoverById: getRoverById
 		}
 	})();
 }]);
