@@ -7,9 +7,21 @@
 
     <div class="row content-part">
       <div class="container">
-        <div class="col-md-4"><div class="filter filter-active"><div class="col-sm-12">Distance to base</div></div></div>
-        <div class="col-md-4"><div class="filter"><div class="col-sm-12">X-Coordinate</div></div></div>
-        <div class="col-md-4"><div class="filter"><div class="col-sm-12">Y-Coordinate</div></div></div>
+        <div class="col-md-4">
+          <div class="filter" ng-class="roverCtrl.currentSort('d')">
+            <div class="col-sm-12" ng-click="roverCtrl.sortRovers('d')">Distance to base</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="filter" ng-class="roverCtrl.currentSort('x')">
+            <div class="col-sm-12" ng-click="roverCtrl.sortRovers('x')">X-Coordinate</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="filter" ng-class="roverCtrl.currentSort('y')">
+            <div class="col-sm-12" ng-click="roverCtrl.sortRovers('y')">Y-Coordinate</div>
+          </div>
+        </div>
         <hr />
         <div class="col-md-4" ng-repeat='rover in roverCtrl.rovers'>
           <div class="single-rover-block">
@@ -50,6 +62,16 @@
             <div class="col-sm-6 text-left">
               <h4><span ng-class="roverCtrl.getDirectionArrow(rover.direction)"></span></h4>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 text-center" ng-click="roverCtrl.toggleFavorite(rover)">
+              <div ng-show="roverCtrl.isRoverFavorite(rover)">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+              </div>
+              <div ng-hide="roverCtrl.isRoverFavorite(rover)">
+                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+              </div>
+            </div>  
           </div>
         </div>
         </div>

@@ -22,17 +22,17 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 		let getAllRovers = () => {
 			getAllRoversIds().forEach((id) => {
 				let request = $http.get('https://roguerovers-api-develop.azurewebsites.net/api/channel/'+id)
-								.then(function(data) {
-									if(data.status === 200){
-										let rover = data.data;
-										rover.distanceToBase = calculateDistanceToBase(rover);
-										rover.isFavorite = isFavorite(rover);
-										rover.id = id;
-										rovers.push(rover);
-									}
-								}).catch(function(err) {
-									console.log(err);
-								});
+				.then(function(data) {
+					if(data.status === 200){
+						let rover = data.data;
+						rover.distanceToBase = calculateDistanceToBase(rover);
+						rover.isFavorite = isFavorite(rover);
+						rover.id = id;
+						rovers.push(rover);
+					}
+				}).catch(function(err) {
+					console.log(err);
+				});
 				requestList.push(request);
 			});
 			return Promise.all(requestList).then(function(data) {
@@ -90,7 +90,11 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 		}
 		let getRoverById = (id) => {
 			return $http.get('https://roguerovers-api-develop.azurewebsites.net/api/channel/'+id).then(function(data) {
-				return data.data;
+				let rover = data.data;
+				rover.distanceToBase = calculateDistanceToBase(rover);
+				rover.isFavorite = isFavorite(rover);
+				rover.id = id;
+				return rover;
 			});
 		}
 		
