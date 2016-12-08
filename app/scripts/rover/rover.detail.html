@@ -1,5 +1,61 @@
-<div class="container">
-	<div class="row">
+<div class="page-title top-content">
+		<div class="page-title-text wow fadeInUp">
+				<h1>{{detailCtrl.rover.name}}</h1>
+				<h2>Currently <span class="positions">{{detailCtrl.rover.distanceToBase}}</span> positions from base</h2>
+		</div>
+</div>
+
+<div class="row content-part">
+	<div class="container">
+		<div class="col-md-6">
+			<div class="map">
+				<div class="map-marker">
+					<span class="fa fa-car"></span>
+				</div>
+				<div class="base-marker">
+					<span class="fa fa-bank"></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 rover-details">
+			<div class="row">
+				<div class="col-sm-4">
+					<h3>Name</h3>
+				</div>
+				<div class="col-sm-8">
+					<h4>{{detailCtrl.rover.name}}</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<h3>Position</h3>
+				</div>
+				<div class="col-sm-8">
+					<h4>({{detailCtrl.rover.position.x}}, {{detailCtrl.rover.position.y}})</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<h3>Speed</h3>
+				</div>
+				<div class="col-sm-8">
+					<h4>{{detailCtrl.rover.speed}}</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<h3>Direction</h3>
+				</div>
+				<div class="col-sm-8">
+					<h4><span ng-class="detailCtrl.getDirectionArrow(detailCtrl.rover.direction)"></h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 	<div class="col-md-12" id="mars-map">
 		<p>{{detailCtrl.rover.position.x}}</p>
 		<p>{{detailCtrl.rover.position.y}}</p>

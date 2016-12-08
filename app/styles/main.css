@@ -6,6 +6,10 @@ body {
   background-color: #000;
 }
 
+.main-content {
+  padding-top: 80px;
+}
+
 /* Typography
 ------------------------------------- */
 h1,h2,h3,h4,h5 {
@@ -18,7 +22,7 @@ h1 {
 }
 
 h2 {
-    color: #323232;
+    color: #fff;
     font-size: 26px;
     line-height: 42px;
     letter-spacing: 1px;
@@ -72,10 +76,8 @@ hr {
     margin: 0;
     color: #ffa400;
 }
-.navbar-default .navbar-brand img{
-    width: auto;
-    height: 60px;
-    cursor: pointer;
+.navbar-default .navbar-brand:hover {
+  color: #fff;
 }
 .navbar-default .navbar-nav li a {
     margin: 0;
@@ -114,6 +116,7 @@ hr {
 .top-content {
   background: url(../images/home-bg.jpg);
   background-size: cover;
+  padding: 100px 0;
 }
 
 .big-link-1 {
@@ -176,7 +179,7 @@ hr {
     padding-bottom: 7px;
 }
 
-.rovers {
+.content-part {
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -211,4 +214,39 @@ hr {
   filter: invert(100%);
   margin: auto;
 
+}
+
+.rover-details h3{
+  color: #ffa400;
+}
+.rover-details h4 {
+  color: #fff;
+}
+
+.positions {
+  color: #ffa400;
+}
+
+.map-marker{
+  position: absolute;
+}
+
+.map .fa {
+  font-size: 20pt;
+  color: #ffa400;
+}
+
+.map {
+  overflow: hidden;
+  width: 100%;
+  background: url(../images/mars.jpg);
+  background-size: cover;
+  position: relative;
+}
+
+.map .base-marker .fa {
+  position: absolute;
+  color: #fff;
+  top: calc(50% - 13px);
+  left: calc(50% - 15px);
 }
