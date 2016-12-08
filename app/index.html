@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="rogerApp">
+  <body ng-app="rogerApp" ng-controller='GlobalCtrl'>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -39,19 +39,18 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a ui-sref="home">Home</a></li>
-              <li><a ui-sref="about">About</a></li>
-              <li><a ui-sref="contact">Contact</a></li>
+              <li><a ng-class="getClass('/home')" ui-sref="home">Home</a></li>
+              <li><a ng-class="getClass('/about')" ui-sref="about">About</a></li>
+              <li><a ng-class="getClass('/contact')" ui-sref="contact">Contact</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
- <!--    <div ui-view=""></div> -->
-     <div class="ui-view"></div>
-    </div>
+     <div class="ui-view">
+       <!-- HIER KOMT CONTENT -->
+     </div>
 
     <div class="footer">
       <div class="container">
@@ -88,6 +87,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/global/global.controller.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/details.js"></script>
