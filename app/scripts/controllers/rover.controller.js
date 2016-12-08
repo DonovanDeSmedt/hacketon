@@ -43,7 +43,6 @@
       return type === self.sortType ? 'filter-active' : '';
     }
     function getDirectionArrow(direction) {
-      console.log("sdfs");
       switch (direction) {
         case 0:
           return 'fa fa-arrow-left';
