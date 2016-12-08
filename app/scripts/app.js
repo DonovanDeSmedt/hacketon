@@ -20,12 +20,12 @@
     'rogerApp.service'
     ])
  .config(function ($stateProvider,$httpProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/home");
   $stateProvider
   .state('home',{
     cache: false,
-    url:'/',
-    templateUrl: 'views/main.html',
+    url:'/home',
+    templateUrl: 'scripts/home/main.html',
     controller: 'MainCtrl',
     controllerAs: 'main'
   })
