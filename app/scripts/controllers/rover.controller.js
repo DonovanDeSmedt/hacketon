@@ -12,18 +12,25 @@
     self.toggleFavorite = toggleFavorite;
     self.isRoverFavorite = isRoverFavorite;
     self.getDirectionArrow = getDirectionArrow;
+    self.currentSort = currentSort;
+    self.sortType;
     self.roverIds;
     self.rovers = rovers;
 
     function getAllRovers() {
-      $interval(function(){
-                channelFactory.getAllRovers().then(function(data) {
+      // $interval(function(){
+      //           channelFactory.getAllRovers().then(function(data) {
+      //       self.rovers = data;
+      //       sortRovers('d');
+      //     });
+      //       },5000);
+      channelFactory.getAllRovers().then(function(data) {
             self.rovers = data;
             sortRovers('d');
           });
-            },5000);
     }
     function sortRovers(type) {
+      self.sortType = type;
       self.rovers = channelFactory.sortRovers(self.rovers, type);
     }
     function toggleFavorite(rover) {
@@ -32,8 +39,11 @@
     function isRoverFavorite(rover) {
       return channelFactory.isFavorite(rover);
     }
+    function currentSort(type) {
+      return type === self.sortType ? 'filter-active' : '';
+    }
     function getDirectionArrow(direction) {
-      console.log(direction);
+      console.log("sdfs");
       switch (direction) {
         case 0:
           return 'fa fa-arrow-left';
@@ -49,7 +59,6 @@
           break;
       }
     };
-    self.getAllRovers();
   };
 
 
