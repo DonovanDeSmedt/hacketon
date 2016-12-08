@@ -40,7 +40,21 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 		let calculateDistanceToBase = (rover) => {
 			const xCoord = rover.position.x;
 			const yCoord = rover.position.y;
-			return {x: parseInt(xCoord-base.x), y: parseInt(yCoord-base.y)};
+			const dist = Math.sqrt(Math.pow(base.x - xCoord, 2) + Math.pow(base.y -yCoord, 2));
+			return parseInt(dist);
+		}
+		let sortRovers = (rovers, type) => {
+			switch(type){
+				case 'd': {
+					rovers.sort((a, b) => { return a.distanceToBase - b.distanceToBase})
+				}
+				case 'x': {
+					rovers.sort((a, b) => { return a.position.x - b.position.x})
+				}
+				case 'y': {
+					rovers.sort((a, b) => { return a.position.y - b.position.y})
+				}
+			}
 		}
 		
 		
