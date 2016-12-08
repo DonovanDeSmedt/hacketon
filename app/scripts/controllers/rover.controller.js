@@ -27,10 +27,13 @@
       //       },5000);
       channelFactory.getAllRovers().then(function(data) {
             self.rovers = data;
-            initMap();
             sortRovers('d');
+
           });
+
+
     }
+    self.initMap();
     function sortRovers(type) {
       self.sortType = type;
       self.rovers = channelFactory.sortRovers(self.rovers, type);
@@ -64,7 +67,7 @@
       console.log("hond");
       var mapWidth = $('.map').width();
       $('.map').css('height', mapWidth);
-
+      console.log(mapWidth);
       self.rovers.forEach((e) => {
         initMarker(e);
       });
@@ -76,7 +79,9 @@
       var roverY = rover.position.y;
       roverX = Math.floor(roverX / 4);
       roverY = Math.floor(roverY / 4);
-      $('#' + rover.id).css('bottom', 'calc( 50% + ' + roverY + 'px - 13px)').css('left', 'calc( 50% + ' + roverX + 'px - 13px)');
+      var roverElement = document.getElementById(rover.name);
+      console.log(roverElement);
+      $(roverElement).css('bottom', 'calc( 50% + ' + roverY + 'px - 13px)').css('left', 'calc( 50% + ' + roverX + 'px - 13px)');
 
     }
   };

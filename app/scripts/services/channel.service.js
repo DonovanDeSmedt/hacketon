@@ -17,13 +17,15 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 			"03337806-2544-4959-b829-b305f148e29b",
 			"94e33c9f-f76c-4841-a69c-ccebad002eb6"
 			]
-			
+
 		}
 		let getAllRovers = () => {
+			rovers = [];
 			getAllRoversIds().forEach((id) => {
 				let request = $http.get('https://roguerovers-api-develop.azurewebsites.net/api/channel/'+id)
 				.then(function(data) {
 					if(data.status === 200){
+
 						let rover = data.data;
 						rover.distanceToBase = calculateDistanceToBase(rover);
 						rover.isFavorite = isFavorite(rover);
@@ -65,7 +67,7 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 			let favoriteRovers = $cookies.getObject('favorite');
 
 			if(angular.isUndefined(favoriteRovers)){
-				favoriteRovers = [];	
+				favoriteRovers = [];
 			}
 			const index = favoriteRovers.map((r) => {return r.name}).indexOf(rover.name);
 			// If rover is in favorites
@@ -97,8 +99,8 @@ angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cook
 				return rover;
 			});
 		}
-		
-		
+
+
 		return{
 			getAllRovers: getAllRovers,
 			sortRovers: sortRovers,
