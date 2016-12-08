@@ -20,14 +20,24 @@
     'rogerApp.service'
     ])
  .config(function ($stateProvider,$httpProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/home");
+  $urlRouterProvider.otherwise("/rovers");
   $stateProvider
   .state('home',{
     cache: false,
     url:'/home',
-    templateUrl: 'scripts/home/main.html',
+    templateUrl: 'scripts/home/main2.html',
     controller: 'MainCtrl',
     controllerAs: 'main'
+  })
+  .state('rovers',{
+    cache: false,
+    url:'/rovers',
+    templateUrl: 'scripts/home/main.html',
+    controller: 'RoverCtrl',
+    controllerAs: 'roverCtrl',
+    resolve: {
+      rovers: getAllRovers
+    }
   })
   .state('about',{
     cache: false,
@@ -63,3 +73,8 @@
     //     redirectTo: '/'
     //   });
   });
+ const getAllRovers = function(channelFactory) {
+  return channelFactory.getAllRovers().then(function(data) {
+       return data;
+      });
+ }

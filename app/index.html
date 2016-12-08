@@ -12,6 +12,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
@@ -22,7 +23,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
 
@@ -33,13 +34,14 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">Roger</a>
+            <a class="navbar-brand" href="#/">MarzRovers</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-right">
               <li><a ng-class="getClass('/home')" ui-sref="home">Home</a></li>
+              <li><a ng-class="getClass('/rovers')" ui-sref="rovers">Rovers</a></li>
               <li><a ng-class="getClass('/about')" ui-sref="about">About</a></li>
               <li><a ng-class="getClass('/contact')" ui-sref="contact">Contact</a></li>
             </ul>
@@ -91,6 +93,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/details.js"></script>
+        <script src="scripts/controllers/rover.controller.js"></script>
         <script src="scripts/directives/testdirective.js"></script>
 
         <script src="scripts/rover/detailController.js"></script>
