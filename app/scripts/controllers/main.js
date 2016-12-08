@@ -16,14 +16,23 @@ angular.module('rogerApp')
 
     let self = this;
     self.getAllRovers = getAllRovers;
+    self.sortRovers = sortRovers;
+    self.toggleFavorite = toggleFavorite;
     self.roverIds;
     self.rovers;
 
     function getAllRovers() {
     	channelFactory.getAllRovers().then(function(data) {
     		self.rovers = data;
-    		console.log(self.rovers);
+    		sortRovers('d');
+    		// toggleFavorite(self.rovers[0]);
     	});
+    }
+    function sortRovers(type) {
+    	self.rovers = channelFactory.sortRovers(self.rovers, type);
+    }
+    function toggleFavorite(rover) {
+    	channelFactory.toggleFavorite(rover);
     }
     self.getAllRovers();
   };
