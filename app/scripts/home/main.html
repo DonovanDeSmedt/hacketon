@@ -24,7 +24,7 @@
         </div>
         <hr />
         <div class="col-md-4" ng-repeat='rover in roverCtrl.rovers'>
-          <div class="single-rover-block">
+          <div class="single-rover-block" ui-sref="rover({id: rover.id})">
           <div class="col-sm-12">
             <img src="/images/rover.png" class="img-responsive">
           </div>

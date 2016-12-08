@@ -36,7 +36,8 @@
     controller: 'RoverCtrl',
     controllerAs: 'roverCtrl',
     resolve: {
-      rovers: getAllRovers
+      rovers: getAllRovers,
+      sensorData: getSensorData
     }
   })
   .state('about',{
@@ -77,4 +78,7 @@
   return channelFactory.getAllRovers().then(function(data) {
        return data;
       });
+ }
+ const getSensorData = function() {
+    console.log("dsf");
  }

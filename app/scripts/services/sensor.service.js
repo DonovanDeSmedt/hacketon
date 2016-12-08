@@ -1,4 +1,4 @@
-angular.module('rogerApp.service', []).factory('channelFactory', ['$http','$cookies', function($http, $cookies){
+angular.module('rogerApp.service', []).factory('sensorFactory', ['$http', function($http){
 	return (function(){
 		let sensor = {};
 		
