@@ -1,37 +1,57 @@
 <!-- START -->
     <div class="page-title top-content">
         <div class="page-title-text wow fadeInUp">
-            <h1>MarzRovers<br>The rogue rovers</h1>
-            <div class="page-title-bottom-link">
-                <a class="big-link-1 btn scroll-link" href="#rovers">Watch the Rovers</a>
-            </div>
+            <h1>MarzRovers<br>The Rogue Rovers</h1>
         </div>
     </div>
 
-
-
-
-
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+    <div class="row rovers">
+      <div class="container">
+        <div class="col-md-4"><div class="filter filter-active"><div class="col-sm-12">Distance to base</div></div></div>
+        <div class="col-md-4"><div class="filter"><div class="col-sm-12">X-Coordinate</div></div></div>
+        <div class="col-md-4"><div class="filter"><div class="col-sm-12">Y-Coordinate</div></div></div>
+        <hr />
+        <div class="col-md-4" ng-repeat='rover in roverCtrl.rovers'>
+          <div class="single-rover-block">
+          <div class="col-sm-12">
+            <img src="/images/rover.png" class="img-responsive">
+          </div>
+          <div class="col-sm-12">
+            <h2>{{rover.name}}</h2>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <h3>Position</h3>
+            </div>
+            <div class="col-sm-6 text-left">
+              <h4>({{rover.position.x}}, {{rover.position.y}})</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <h3>Speed</h3>
+            </div>
+            <div class="col-sm-6 text-left">
+              <h4>{{rover.speed}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <h3>Distance</h3>
+            </div>
+            <div class="col-sm-6 text-left">
+              <h4>{{rover.distanceToBase}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <h3>Direction</h3>
+            </div>
+            <div class="col-sm-6 text-left">
+              <h4><span ng-class="roverCtrl.getDirectionArrow(rover.direction)"></span></h4>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>

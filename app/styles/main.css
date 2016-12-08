@@ -25,11 +25,13 @@ h2 {
     padding-bottom: 12px;
 }
 
-h3 {
-    color: #ffa400;
+h3, h4 {
+    color: #000;
     font-size: 16px;
     letter-spacing: 26px;
     letter-spacing: 2px;
+    margin: 0;
+    margin: 10px 0;
 }
 
 h5 {
@@ -43,6 +45,68 @@ p, .site-content   ul {
     letter-spacing: 0.9px;
     line-height: 32px;
 }
+
+hr {
+  border: 0;
+  border-bottom: 1px solid #ffa400;
+  width: calc(100% - 30px);
+  margin: 15px;
+}
+
+
+
+/* navigation styles
+/* ========================================== */
+.navbar-default {
+    background: #000;
+    border: none;
+    box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.04);
+    margin: 0 !important;
+    border-bottom: 3px solid #ffa400;
+}
+.navbar-default .navbar-brand {
+    height: 80px;
+    font-size: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin: 0;
+    color: #ffa400;
+}
+.navbar-default .navbar-brand img{
+    width: auto;
+    height: 60px;
+    cursor: pointer;
+}
+.navbar-default .navbar-nav li a {
+    margin: 0;
+    padding: 30px 20px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}
+.navbar-default .navbar-nav li a:hover {
+    color: #ffa400;
+  }
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a.active {
+    background-color: #ffa400;
+    color: black;
+}
+.navbar-default .navbar-toggle {
+     border: none;
+     padding-top: 12px;
+  }
+.navbar-default .navbar-toggle .icon-bar {
+    background: #ffa400;
+    border-color: transparent;
+  }
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+
 
 /* Landing
 ------------------------------------- */
@@ -71,7 +135,6 @@ p, .site-content   ul {
     opacity: 0.6;
     color: #fff;
 }
-
 
 
 /***** Page title *****/
@@ -103,4 +166,41 @@ p, .site-content   ul {
 .page-title-bottom-link {
     padding-top: 25px;
     padding-bottom: 7px;
+}
+
+.rovers {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.filter {
+    text-align: center;
+    border: 1px solid #ffa400;
+    background-color: transparent;
+    overflow: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.single-rover-block, .filter-active {
+  text-align: center;
+  border: 1px solid #ffa400;
+  background-color: #ffa400;
+  overflow: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.single-rover-block h2 {
+  color: #000;
+}
+
+.single-rover-block img {
+  filter: invert(100%);
+  margin: auto;
+
 }

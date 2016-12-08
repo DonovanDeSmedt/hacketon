@@ -25,9 +25,16 @@
   .state('home',{
     cache: false,
     url:'/home',
-    templateUrl: 'scripts/home/main.html',
+    templateUrl: 'scripts/home/main2.html',
     controller: 'MainCtrl',
     controllerAs: 'main'
+  })
+  .state('rovers',{
+    cache: false,
+    url:'/rovers',
+    templateUrl: 'scripts/home/main.html',
+    controller: 'RoverCtrl',
+    controllerAs: 'roverCtrl'
   })
   .state('about',{
     cache: false,
