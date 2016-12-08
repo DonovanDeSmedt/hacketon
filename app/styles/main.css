@@ -22,7 +22,7 @@ h1 {
 }
 
 h2 {
-    color: #323232;
+    color: #fff;
     font-size: 26px;
     line-height: 42px;
     letter-spacing: 1px;
@@ -216,18 +216,37 @@ hr {
 
 }
 
+.rover-details h3{
+  color: #ffa400;
+}
+.rover-details h4 {
+  color: #fff;
+}
+
+.positions {
+  color: #ffa400;
+}
+
 .map-marker{
   position: absolute;
 }
 
-.map-marker .fa {
+.map .fa {
   font-size: 20pt;
   color: #ffa400;
 }
 
 .map {
+  overflow: hidden;
   width: 100%;
   background: url(../images/mars.jpg);
   background-size: cover;
   position: relative;
+}
+
+.map .base-marker .fa {
+  position: absolute;
+  color: #fff;
+  top: calc(50% - 13px);
+  left: calc(50% - 15px);
 }
