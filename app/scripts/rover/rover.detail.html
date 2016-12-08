@@ -1,5 +1,29 @@
-<div class="container">
-	<div class="row">
+<div class="page-title top-content">
+		<div class="page-title-text wow fadeInUp">
+				<h1>{{detailCtrl.rover.name}}<br>Currently {{detailCtrl.rover.distanceToBase}} positions from base</h1>
+		</div>
+</div>
+
+<div class="row content-part">
+	<div class="container">
+		<div class="col-md-6">
+			<div class="map">
+				<div class="map-marker">
+					<span class="fa fa-map-marker"></span>
+				</div>
+				<script>
+					var mapWidth = $('.map').width();
+					$('.map').css('height', mapWidth);
+					$('.map-marker').css('top', 'calc(50% - 13px)').css('left', 'calc(50% - 7px)');
+
+				</script>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 	<div class="col-md-12" id="mars-map">
 		<p>{{detailCtrl.rover.position.x}}</p>
 		<p>{{detailCtrl.rover.position.y}}</p>

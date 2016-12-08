@@ -33,7 +33,6 @@
       return channelFactory.isFavorite(rover);
     }
     function getDirectionArrow(direction) {
-      console.log(direction);
       switch (direction) {
         case 0:
           return 'fa fa-arrow-left';
@@ -49,7 +48,7 @@
           break;
       }
     };
-    self.getAllRovers();
+    
   };
 
 
